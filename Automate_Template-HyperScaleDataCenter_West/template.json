@@ -1,0 +1,2418 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "servers_hsdcsqlserver_name": {
+            "defaultValue": "hsdcsqlserver",
+            "type": "String"
+        },
+        "servers_hsdcsecsqlserver_name": {
+            "defaultValue": "hsdcsecsqlserver",
+            "type": "String"
+        },
+        "availabilitySets_HSDC_AS_name": {
+            "defaultValue": "HSDC_AS",
+            "type": "String"
+        },
+        "virtualMachines_PrimaryDNS_name": {
+            "defaultValue": "PrimaryDNS",
+            "type": "String"
+        },
+        "virtualMachines_WebServer1_name": {
+            "defaultValue": "WebServer1",
+            "type": "String"
+        },
+        "virtualMachines_WebServer2_name": {
+            "defaultValue": "WebServer2",
+            "type": "String"
+        },
+        "virtualMachines_SecondaryDC_name": {
+            "defaultValue": "SecondaryDC",
+            "type": "String"
+        },
+        "actionGroups_Admininstrator_name": {
+            "defaultValue": "Admininstrator",
+            "type": "String"
+        },
+        "loadBalancers_HyperScaleDC_LB_name": {
+            "defaultValue": "HyperScaleDC_LB",
+            "type": "String"
+        },
+        "networkInterfaces_primarydns20_name": {
+            "defaultValue": "primarydns20",
+            "type": "String"
+        },
+        "networkInterfaces_webserver1115_name": {
+            "defaultValue": "webserver1115",
+            "type": "String"
+        },
+        "networkInterfaces_webserver2510_name": {
+            "defaultValue": "webserver2510",
+            "type": "String"
+        },
+        "publicIPAddresses_PrimaryDNS_ip_name": {
+            "defaultValue": "PrimaryDNS-ip",
+            "type": "String"
+        },
+        "publicIPAddresses_WebServer1_ip_name": {
+            "defaultValue": "WebServer1-ip",
+            "type": "String"
+        },
+        "publicIPAddresses_WebServer2_ip_name": {
+            "defaultValue": "WebServer2-ip",
+            "type": "String"
+        },
+        "virtualNetworks_HyperScaleDC_VN_name": {
+            "defaultValue": "HyperScaleDC_VN",
+            "type": "String"
+        },
+        "networkInterfaces_secondarydc622_name": {
+            "defaultValue": "secondarydc622",
+            "type": "String"
+        },
+        "publicIPAddresses_SecondaryDC_ip_name": {
+            "defaultValue": "SecondaryDC-ip",
+            "type": "String"
+        },
+        "databases_HSDC_DB_name": {
+            "defaultValue": "HSDC_DB",
+            "type": "String"
+        },
+        "publicIPAddresses_HyperScaleDC_LB_ip_name": {
+            "defaultValue": "HyperScaleDC_LB_ip",
+            "type": "String"
+        },
+        "advisors_DropIndex_name": {
+            "defaultValue": "DropIndex",
+            "type": "String"
+        },
+        "keys_ServiceManaged_name": {
+            "defaultValue": "ServiceManaged",
+            "type": "String"
+        },
+        "networkSecurityGroups_HyperScaleDC_NSG_name": {
+            "defaultValue": "HyperScaleDC_NSG",
+            "type": "String"
+        },
+        "databases_HSDC_DB_name_1": {
+            "defaultValue": "HSDC_DB",
+            "type": "String"
+        },
+        "advisors_CreateIndex_name": {
+            "defaultValue": "CreateIndex",
+            "type": "String"
+        },
+        "advisors_DropIndex_name_1": {
+            "defaultValue": "DropIndex",
+            "type": "String"
+        },
+        "storageAccounts_hyperscaledatacenterwest_name": {
+            "defaultValue": "hyperscaledatacenterwest",
+            "type": "String"
+        },
+        "keys_ServiceManaged_name_1": {
+            "defaultValue": "ServiceManaged",
+            "type": "String"
+        },
+        "advisors_CreateIndex_name_1": {
+            "defaultValue": "CreateIndex",
+            "type": "String"
+        },
+        "advisors_DefragmentIndex_name": {
+            "defaultValue": "DefragmentIndex",
+            "type": "String"
+        },
+        "auditingPolicies_Default_name": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "publicIPAddresses_HSDC_LoadBalancerFrontEnd_name": {
+            "defaultValue": "HSDC_LoadBalancerFrontEnd",
+            "type": "String"
+        },
+        "advisors_ForceLastGoodPlan_name": {
+            "defaultValue": "ForceLastGoodPlan",
+            "type": "String"
+        },
+        "advisors_DefragmentIndex_name_1": {
+            "defaultValue": "DefragmentIndex",
+            "type": "String"
+        },
+        "auditingPolicies_Default_name_1": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "advisors_DbParameterization_name": {
+            "defaultValue": "DbParameterization",
+            "type": "String"
+        },
+        "encryptionProtector_current_name": {
+            "defaultValue": "current",
+            "type": "String"
+        },
+        "advisors_ForceLastGoodPlan_name_1": {
+            "defaultValue": "ForceLastGoodPlan",
+            "type": "String"
+        },
+        "advisors_DbParameterization_name_1": {
+            "defaultValue": "DbParameterization",
+            "type": "String"
+        },
+        "encryptionProtector_current_name_1": {
+            "defaultValue": "current",
+            "type": "String"
+        },
+        "metricAlerts_Percentage%20CPU%20Greater%20than%2080_name": {
+            "defaultValue": "Percentage%20CPU%20Greater%20than%2080",
+            "type": "String"
+        },
+        "subnets_BackEndSubnet_name": {
+            "defaultValue": "BackEndSubnet",
+            "type": "String"
+        },
+        "subnets_FrontEndSubnet_name": {
+            "defaultValue": "FrontEndSubnet",
+            "type": "String"
+        },
+        "advisors_DropIndex_name_2": {
+            "defaultValue": "DropIndex",
+            "type": "String"
+        },
+        "firewallRules_AllowAllWindowsAzureIps_name": {
+            "defaultValue": "AllowAllWindowsAzureIps",
+            "type": "String"
+        },
+        "advisors_CreateIndex_name_2": {
+            "defaultValue": "CreateIndex",
+            "type": "String"
+        },
+        "securityRules_ICMP_name": {
+            "defaultValue": "ICMP",
+            "type": "String"
+        },
+        "advisors_DropIndex_name_3": {
+            "defaultValue": "DropIndex",
+            "type": "String"
+        },
+        "activityLogAlerts_Database_Percentage_CPU_Greater_than_80_name": {
+            "defaultValue": "Database Percentage CPU Greater than 80",
+            "type": "String"
+        },
+        "firewallRules_AllowAllWindowsAzureIps_name_1": {
+            "defaultValue": "AllowAllWindowsAzureIps",
+            "type": "String"
+        },
+        "advisors_CreateIndex_name_3": {
+            "defaultValue": "CreateIndex",
+            "type": "String"
+        },
+        "auditingPolicies_Default_name_2": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "databases_master_name": {
+            "defaultValue": "master",
+            "type": "String"
+        },
+        "advisors_DefragmentIndex_name_2": {
+            "defaultValue": "DefragmentIndex",
+            "type": "String"
+        },
+        "auditingPolicies_Default_name_3": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "geoBackupPolicies_Default_name": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "securityRules_Port_RDP_name": {
+            "defaultValue": "Port_RDP",
+            "type": "String"
+        },
+        "securityRules_Port_SSH_name": {
+            "defaultValue": "Port_SSH",
+            "type": "String"
+        },
+        "geoBackupPolicies_Default_name_1": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "securityRules_Port_HTTP_name": {
+            "defaultValue": "Port_HTTP",
+            "type": "String"
+        },
+        "securityRules_Port_8172_name": {
+            "defaultValue": "Port_8172",
+            "type": "String"
+        },
+        "auditingPolicies_Default_name_4": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "databases_master_name_1": {
+            "defaultValue": "master",
+            "type": "String"
+        },
+        "advisors_ForceLastGoodPlan_name_2": {
+            "defaultValue": "ForceLastGoodPlan",
+            "type": "String"
+        },
+        "securityRules_Port_HTTPS_name": {
+            "defaultValue": "Port_HTTPS",
+            "type": "String"
+        },
+        "advisors_DefragmentIndex_name_3": {
+            "defaultValue": "DefragmentIndex",
+            "type": "String"
+        },
+        "auditingPolicies_Default_name_5": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "geoBackupPolicies_Default_name_2": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "advisors_DbParameterization_name_2": {
+            "defaultValue": "DbParameterization",
+            "type": "String"
+        },
+        "geoBackupPolicies_Default_name_3": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "advisors_ForceLastGoodPlan_name_3": {
+            "defaultValue": "ForceLastGoodPlan",
+            "type": "String"
+        },
+        "advisors_DbParameterization_name_3": {
+            "defaultValue": "DbParameterization",
+            "type": "String"
+        },
+        "firewallRules_ClientIPAddress_2018_11_17_21_45_35_name": {
+            "defaultValue": "ClientIPAddress_2018-11-17_21-45-35",
+            "type": "String"
+        },
+        "transparentDataEncryption_current_name": {
+            "defaultValue": "current",
+            "type": "String"
+        },
+        "metricAlerts_WebServer2%20_%20Percentage%20CPU%20Greater%20than%2080_name": {
+            "defaultValue": "WebServer2%20-%20Percentage%20CPU%20Greater%20than%2080",
+            "type": "String"
+        },
+        "transparentDataEncryption_current_name_1": {
+            "defaultValue": "current",
+            "type": "String"
+        },
+        "transparentDataEncryption_current_name_2": {
+            "defaultValue": "current",
+            "type": "String"
+        },
+        "transparentDataEncryption_current_name_3": {
+            "defaultValue": "current",
+            "type": "String"
+        },
+        "virtualMachines_PrimaryDNS_id": {
+            "defaultValue": "/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HYPERSCALEDATACENTER_WEST/providers/Microsoft.Compute/disks/PrimaryDNS_OsDisk_1_ab97d73a08d448cfa2a052f201e66ad1",
+            "type": "String"
+        },
+        "virtualMachines_SecondaryDC_id": {
+            "defaultValue": "/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HYPERSCALEDATACENTER_WEST/providers/Microsoft.Compute/disks/SecondaryDC_OsDisk_1_e962a74f5eac4a1cbd847e6c07ea80dd",
+            "type": "String"
+        },
+        "virtualMachines_WebServer1_id": {
+            "defaultValue": "/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HYPERSCALEDATACENTER_WEST/providers/Microsoft.Compute/disks/WebServer1_OsDisk_1_0827791de4a14da3adfc217dedddc629",
+            "type": "String"
+        },
+        "virtualMachines_WebServer2_id": {
+            "defaultValue": "/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HYPERSCALEDATACENTER_WEST/providers/Microsoft.Compute/disks/WebServer2_OsDisk_1_c6ecf4ad8d484a3db1418b28ab14b2ed",
+            "type": "String"
+        },
+        "loadBalancers_HyperScaleDC_LB_id": {
+            "defaultValue": "/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/loadBalancers/HyperScaleDC_LB/frontendIPConfigurations/LoadBalancerFrontEnd",
+            "type": "String"
+        },
+        "loadBalancers_HyperScaleDC_LB_id_1": {
+            "defaultValue": "/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/loadBalancers/HyperScaleDC_LB/backendAddressPools/HSDC_BackEndPool",
+            "type": "String"
+        },
+        "loadBalancers_HyperScaleDC_LB_id_2": {
+            "defaultValue": "/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/loadBalancers/HyperScaleDC_LB/probes/HSDC_HealthProbe",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Compute/availabilitySets/HSDC_AS'.",
+            "type": "Microsoft.Compute/availabilitySets",
+            "sku": {
+                "name": "Aligned"
+            },
+            "name": "[parameters('availabilitySets_HSDC_AS_name')]",
+            "apiVersion": "2018-06-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "platformUpdateDomainCount": 5,
+                "platformFaultDomainCount": 2,
+                "virtualMachines": [
+                    {
+                        "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_WebServer1_name'))]"
+                    },
+                    {
+                        "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_WebServer2_name'))]"
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_WebServer1_name'))]",
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_WebServer2_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Compute/virtualMachines/PrimaryDNS'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_PrimaryDNS_name')]",
+            "apiVersion": "2018-06-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_DS1_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_PrimaryDNS_name'),'_OsDisk_1_ab97d73a08d448cfa2a052f201e66ad1')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "id": "[parameters('virtualMachines_PrimaryDNS_id')]"
+                        }
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_PrimaryDNS_name')]",
+                    "adminUsername": "ivor",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_primarydns20_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_hyperscaledatacenterwest_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_primarydns20_name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_hyperscaledatacenterwest_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Compute/virtualMachines/SecondaryDC'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_SecondaryDC_name')]",
+            "apiVersion": "2018-06-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_DS1_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_SecondaryDC_name'),'_OsDisk_1_e962a74f5eac4a1cbd847e6c07ea80dd')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "id": "[parameters('virtualMachines_SecondaryDC_id')]"
+                        }
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_SecondaryDC_name')]",
+                    "adminUsername": "ivor",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_secondarydc622_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_hyperscaledatacenterwest_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_secondarydc622_name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_hyperscaledatacenterwest_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Compute/virtualMachines/WebServer1'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_WebServer1_name')]",
+            "apiVersion": "2018-06-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "availabilitySet": {
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_HSDC_AS_name'))]"
+                },
+                "hardwareProfile": {
+                    "vmSize": "Standard_DS1_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_WebServer1_name'),'_OsDisk_1_0827791de4a14da3adfc217dedddc629')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "id": "[parameters('virtualMachines_WebServer1_id')]"
+                        }
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_WebServer1_name')]",
+                    "adminUsername": "ivor",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_webserver1115_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_hyperscaledatacenterwest_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_HSDC_AS_name'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_webserver1115_name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_hyperscaledatacenterwest_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Compute/virtualMachines/WebServer2'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_WebServer2_name')]",
+            "apiVersion": "2018-06-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "availabilitySet": {
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_HSDC_AS_name'))]"
+                },
+                "hardwareProfile": {
+                    "vmSize": "Standard_DS1_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_WebServer2_name'),'_OsDisk_1_c6ecf4ad8d484a3db1418b28ab14b2ed')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "storageAccountType": "Premium_LRS",
+                            "id": "[parameters('virtualMachines_WebServer2_id')]"
+                        },
+                        "diskSizeGB": 127
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_WebServer2_name')]",
+                    "adminUsername": "ivor",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_webserver2510_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_hyperscaledatacenterwest_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_HSDC_AS_name'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_webserver2510_name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_hyperscaledatacenterwest_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/microsoft.insights/actionGroups/Admininstrator'.",
+            "type": "microsoft.insights/actionGroups",
+            "name": "[parameters('actionGroups_Admininstrator_name')]",
+            "apiVersion": "2018-03-01",
+            "location": "Global",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "groupShortName": "Admin",
+                "enabled": true,
+                "emailReceivers": [],
+                "smsReceivers": [],
+                "webhookReceivers": [],
+                "itsmReceivers": [],
+                "azureAppPushReceivers": [],
+                "automationRunbookReceivers": [],
+                "voiceReceivers": [],
+                "logicAppReceivers": [],
+                "azureFunctionReceivers": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/microsoft.insights/activityLogAlerts/Database Percentage CPU Greater than 80'.",
+            "type": "microsoft.insights/activityLogAlerts",
+            "name": "[parameters('activityLogAlerts_Database_Percentage_CPU_Greater_than_80_name')]",
+            "apiVersion": "2017-04-01",
+            "location": "Global",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "scopes": [
+                    "/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea"
+                ],
+                "condition": {
+                    "allOf": [
+                        {
+                            "field": "category",
+                            "equals": "Administrative"
+                        },
+                        {
+                            "field": "resourceId",
+                            "equals": "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsqlserver_name'), parameters('databases_HSDC_DB_name'))]"
+                        },
+                        {
+                            "field": "level",
+                            "equals": "critical"
+                        }
+                    ]
+                },
+                "actions": {
+                    "actionGroups": [
+                        {
+                            "actionGroupId": "[resourceId('microsoft.insights/actionGroups', parameters('actionGroups_Admininstrator_name'))]",
+                            "webhookProperties": {}
+                        }
+                    ]
+                },
+                "enabled": true,
+                "description": "This alert will notify when the percentage of the CPU consumed is greater than 80%"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsqlserver_name'), parameters('databases_HSDC_DB_name'))]",
+                "[resourceId('microsoft.insights/actionGroups', parameters('actionGroups_Admininstrator_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/microsoft.insights/metricAlerts/Percentage%20CPU%20Greater%20than%2080'.",
+            "type": "microsoft.insights/metricAlerts",
+            "name": "[parameters('metricAlerts_Percentage%20CPU%20Greater%20than%2080_name')]",
+            "apiVersion": "2018-03-01",
+            "location": "global",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "description": "This alert will notify when the percentage of the CPU consumed is greater than 80%",
+                "severity": 3,
+                "enabled": true,
+                "scopes": [
+                    "/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Compute/virtualMachines/WebServer1"
+                ],
+                "evaluationFrequency": "PT1M",
+                "windowSize": "PT5M",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[resourceId('microsoft.insights/actionGroups', parameters('actionGroups_Admininstrator_name'))]",
+                        "webHookProperties": {}
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[resourceId('microsoft.insights/actionGroups', parameters('actionGroups_Admininstrator_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/microsoft.insights/metricAlerts/WebServer2%20-%20Percentage%20CPU%20Greater%20than%2080'.",
+            "type": "microsoft.insights/metricAlerts",
+            "name": "[parameters('metricAlerts_WebServer2%20_%20Percentage%20CPU%20Greater%20than%2080_name')]",
+            "apiVersion": "2018-03-01",
+            "location": "global",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "description": "This alert will notify when the percentage of the CPU consumed is greater than 80%",
+                "severity": 3,
+                "enabled": true,
+                "scopes": [
+                    "/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Compute/virtualMachines/WebServer2"
+                ],
+                "evaluationFrequency": "PT1M",
+                "windowSize": "PT5M",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[resourceId('microsoft.insights/actionGroups', parameters('actionGroups_Admininstrator_name'))]",
+                        "webHookProperties": {}
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[resourceId('microsoft.insights/actionGroups', parameters('actionGroups_Admininstrator_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/loadBalancers/HyperScaleDC_LB'.",
+            "type": "Microsoft.Network/loadBalancers",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('loadBalancers_HyperScaleDC_LB_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "685613cc-429a-4c6e-9187-0a28c88f6905",
+                "frontendIPConfigurations": [
+                    {
+                        "name": "LoadBalancerFrontEnd",
+                        "etag": "W/\"d287aca5-7ad8-4a5c-b04f-1745829806b3\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_HSDC_LoadBalancerFrontEnd_name'))]"
+                            }
+                        }
+                    }
+                ],
+                "backendAddressPools": [
+                    {
+                        "name": "HSDC_BackEndPool",
+                        "etag": "W/\"d287aca5-7ad8-4a5c-b04f-1745829806b3\"",
+                        "properties": {
+                            "provisioningState": "Succeeded"
+                        }
+                    }
+                ],
+                "loadBalancingRules": [
+                    {
+                        "name": "HSDC_LB_Rules",
+                        "etag": "W/\"d287aca5-7ad8-4a5c-b04f-1745829806b3\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "frontendIPConfiguration": {
+                                "id": "[parameters('loadBalancers_HyperScaleDC_LB_id')]"
+                            },
+                            "frontendPort": 80,
+                            "backendPort": 80,
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "protocol": "Tcp",
+                            "enableTcpReset": false,
+                            "loadDistribution": "Default",
+                            "backendAddressPool": {
+                                "id": "[parameters('loadBalancers_HyperScaleDC_LB_id_1')]"
+                            },
+                            "probe": {
+                                "id": "[parameters('loadBalancers_HyperScaleDC_LB_id_2')]"
+                            }
+                        }
+                    }
+                ],
+                "probes": [
+                    {
+                        "name": "HSDC_HealthProbe",
+                        "etag": "W/\"d287aca5-7ad8-4a5c-b04f-1745829806b3\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "Tcp",
+                            "port": 80,
+                            "intervalInSeconds": 5,
+                            "numberOfProbes": 2
+                        }
+                    }
+                ],
+                "inboundNatRules": [],
+                "outboundRules": [],
+                "inboundNatPools": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_HSDC_LoadBalancerFrontEnd_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/networkInterfaces/primarydns20'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_primarydns20_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "4b2bbc8c-9b77-4c1c-bbb6-c1c79bf51930",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"095f6f27-83a3-4832-8040-3701357ff17b\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.4.0.4",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_PrimaryDNS_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_HyperScaleDC_VN_name'), parameters('subnets_FrontEndSubnet_name'))]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+                },
+                "primary": true,
+                "tapConfigurations": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_PrimaryDNS_ip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_HyperScaleDC_VN_name'), parameters('subnets_FrontEndSubnet_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/networkInterfaces/secondarydc622'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_secondarydc622_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "709e5cb9-1ffa-4bd7-83c9-12e23fb3c5e9",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"43e29534-566b-40cc-853e-14edb344a480\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.4.1.4",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_SecondaryDC_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_HyperScaleDC_VN_name'), parameters('subnets_BackEndSubnet_name'))]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+                },
+                "primary": true,
+                "tapConfigurations": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_SecondaryDC_ip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_HyperScaleDC_VN_name'), parameters('subnets_BackEndSubnet_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/networkInterfaces/webserver1115'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_webserver1115_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "5941005c-44ab-4593-98f9-e5fe7df34ea3",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"1a19ef29-d8e0-40f1-ad3b-51d33a01933c\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.4.0.5",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_WebServer1_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_HyperScaleDC_VN_name'), parameters('subnets_FrontEndSubnet_name'))]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4",
+                            "loadBalancerBackendAddressPools": [
+                                {
+                                    "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_HyperScaleDC_LB_name')), '/backendAddressPools/HSDC_BackEndPool')]"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+                },
+                "primary": true,
+                "tapConfigurations": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_WebServer1_ip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_HyperScaleDC_VN_name'), parameters('subnets_FrontEndSubnet_name'))]",
+                "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_HyperScaleDC_LB_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/networkInterfaces/webserver2510'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_webserver2510_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "a47f16be-117b-45b5-b360-70836313cfa4",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"0ad5599c-6e26-4038-b913-f4076c78a6b1\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.4.0.6",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_WebServer2_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_HyperScaleDC_VN_name'), parameters('subnets_FrontEndSubnet_name'))]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4",
+                            "loadBalancerBackendAddressPools": [
+                                {
+                                    "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_HyperScaleDC_LB_name')), '/backendAddressPools/HSDC_BackEndPool')]"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": [],
+                    "internalDomainNameSuffix": "kgk0desnkxnurenir5qxltoqoe.dx.internal.cloudapp.net"
+                },
+                "macAddress": "00-0D-3A-3B-CE-5D",
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+                },
+                "primary": true,
+                "tapConfigurations": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_WebServer2_ip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_HyperScaleDC_VN_name'), parameters('subnets_FrontEndSubnet_name'))]",
+                "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_HyperScaleDC_LB_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/networkSecurityGroups/HyperScaleDC_NSG'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_HyperScaleDC_NSG_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "886a63e9-7f14-4e6c-81da-ee1736fe0e29",
+                "securityRules": [
+                    {
+                        "name": "Port_RDP",
+                        "etag": "W/\"c6b68b50-cb6a-496f-92c2-05f2437668d0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 150,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "Port_HTTP",
+                        "etag": "W/\"c6b68b50-cb6a-496f-92c2-05f2437668d0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 100,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "Port_HTTPS",
+                        "etag": "W/\"c6b68b50-cb6a-496f-92c2-05f2437668d0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "443",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 300,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "Port_SSH",
+                        "etag": "W/\"c6b68b50-cb6a-496f-92c2-05f2437668d0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 400,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "Port_8172",
+                        "etag": "W/\"c6b68b50-cb6a-496f-92c2-05f2437668d0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Microsoft Remote Administration for IIS Manager",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "8172",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 110,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "ICMP",
+                        "etag": "W/\"c6b68b50-cb6a-496f-92c2-05f2437668d0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 120,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ],
+                "defaultSecurityRules": [
+                    {
+                        "name": "AllowVnetInBound",
+                        "etag": "W/\"c6b68b50-cb6a-496f-92c2-05f2437668d0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowAzureLoadBalancerInBound",
+                        "etag": "W/\"c6b68b50-cb6a-496f-92c2-05f2437668d0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from azure load balancer",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "AzureLoadBalancer",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllInBound",
+                        "etag": "W/\"c6b68b50-cb6a-496f-92c2-05f2437668d0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all inbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowVnetOutBound",
+                        "etag": "W/\"c6b68b50-cb6a-496f-92c2-05f2437668d0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowInternetOutBound",
+                        "etag": "W/\"c6b68b50-cb6a-496f-92c2-05f2437668d0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to Internet",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "Internet",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllOutBound",
+                        "etag": "W/\"c6b68b50-cb6a-496f-92c2-05f2437668d0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all outbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/publicIPAddresses/HSDC_LoadBalancerFrontEnd'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_HSDC_LoadBalancerFrontEnd_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "049051c6-83db-4ab2-84c9-f12fb4e44b12",
+                "ipAddress": "168.61.22.190",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/publicIPAddresses/HyperScaleDC_LB_ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_HyperScaleDC_LB_ip_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "4911f604-fefa-407d-a49b-64bb0591ebda",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/publicIPAddresses/PrimaryDNS-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_PrimaryDNS_ip_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "c301c183-29d3-4064-8b4e-0916a85f67c2",
+                "ipAddress": "40.112.177.40",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4,
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/publicIPAddresses/SecondaryDC-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_SecondaryDC_ip_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "a882721d-bede-44df-b1ba-90bf5e33881b",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/publicIPAddresses/WebServer1-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_WebServer1_ip_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "acf86773-330b-40f2-8515-a79ffefb48e0",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "webserver1",
+                    "fqdn": "webserver1.westus.cloudapp.azure.com"
+                },
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/publicIPAddresses/WebServer2-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_WebServer2_ip_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "9b64bc7b-5920-4106-9d87-84dbcb4b31d6",
+                "ipAddress": "168.61.18.41",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "ilwebserver2",
+                    "fqdn": "ilwebserver2.westus.cloudapp.azure.com"
+                },
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/virtualNetworks/HyperScaleDC_VN'.",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('virtualNetworks_HyperScaleDC_VN_name')]",
+            "apiVersion": "2018-08-01",
+            "location": "westus",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "92a19551-554d-48db-91a8-8fe175cdd074",
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.4.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "FrontEndSubnet",
+                        "etag": "W/\"648121ec-3e2b-41f6-81c2-598f8bbaea71\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "addressPrefix": "10.4.0.0/24",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+                            },
+                            "serviceEndpoints": [],
+                            "delegations": []
+                        }
+                    },
+                    {
+                        "name": "BackEndSubnet",
+                        "etag": "W/\"648121ec-3e2b-41f6-81c2-598f8bbaea71\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "addressPrefix": "10.4.1.0/24",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+                            },
+                            "serviceEndpoints": [],
+                            "delegations": []
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [],
+                "enableDdosProtection": false,
+                "enableVmProtection": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver'.",
+            "type": "Microsoft.Sql/servers",
+            "kind": "v12.0",
+            "name": "[parameters('servers_hsdcsecsqlserver_name')]",
+            "apiVersion": "2015-05-01-preview",
+            "location": "centralus",
+            "scale": null,
+            "properties": {
+                "administratorLogin": "ivor",
+                "version": "12.0"
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver'.",
+            "type": "Microsoft.Sql/servers",
+            "kind": "v12.0",
+            "name": "[parameters('servers_hsdcsqlserver_name')]",
+            "apiVersion": "2015-05-01-preview",
+            "location": "westus",
+            "scale": null,
+            "properties": {
+                "administratorLogin": "ivor",
+                "version": "12.0"
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Storage/storageAccounts/hyperscaledatacenterwest'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_hyperscaledatacenterwest_name')]",
+            "apiVersion": "2018-07-01",
+            "location": "westus",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": false,
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "enabled": true
+                        },
+                        "blob": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/networkSecurityGroups/HyperScaleDC_NSG/securityRules/Port_RDP'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_HyperScaleDC_NSG_name'), '/', parameters('securityRules_Port_RDP_name'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "3389",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 150,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/networkSecurityGroups/HyperScaleDC_NSG/securityRules/Port_HTTP'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_HyperScaleDC_NSG_name'), '/', parameters('securityRules_Port_HTTP_name'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "80",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 100,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/networkSecurityGroups/HyperScaleDC_NSG/securityRules/Port_HTTPS'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_HyperScaleDC_NSG_name'), '/', parameters('securityRules_Port_HTTPS_name'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "443",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 300,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/networkSecurityGroups/HyperScaleDC_NSG/securityRules/Port_SSH'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_HyperScaleDC_NSG_name'), '/', parameters('securityRules_Port_SSH_name'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "*",
+                "sourcePortRange": "*",
+                "destinationPortRange": "22",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 400,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/networkSecurityGroups/HyperScaleDC_NSG/securityRules/Port_8172'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_HyperScaleDC_NSG_name'), '/', parameters('securityRules_Port_8172_name'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "description": "Microsoft Remote Administration for IIS Manager",
+                "protocol": "*",
+                "sourcePortRange": "*",
+                "destinationPortRange": "8172",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 110,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/networkSecurityGroups/HyperScaleDC_NSG/securityRules/ICMP'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_HyperScaleDC_NSG_name'), '/', parameters('securityRules_ICMP_name'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "*",
+                "sourcePortRange": "*",
+                "destinationPortRange": "*",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 120,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/virtualNetworks/HyperScaleDC_VN/subnets/FrontEndSubnet'.",
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "name": "[concat(parameters('virtualNetworks_HyperScaleDC_VN_name'), '/', parameters('subnets_FrontEndSubnet_name'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "addressPrefix": "10.4.0.0/24",
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+                },
+                "serviceEndpoints": [],
+                "delegations": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_HyperScaleDC_VN_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Network/virtualNetworks/HyperScaleDC_VN/subnets/BackEndSubnet'.",
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "name": "[concat(parameters('virtualNetworks_HyperScaleDC_VN_name'), '/', parameters('subnets_BackEndSubnet_name'))]",
+            "apiVersion": "2018-08-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "addressPrefix": "10.4.1.0/24",
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+                },
+                "serviceEndpoints": [],
+                "delegations": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_HyperScaleDC_VN_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_HyperScaleDC_NSG_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/advisors/CreateIndex'.",
+            "type": "Microsoft.Sql/servers/advisors",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('advisors_CreateIndex_name_1'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/advisors/DropIndex'.",
+            "type": "Microsoft.Sql/servers/advisors",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('advisors_DropIndex_name_1'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/advisors/DbParameterization'.",
+            "type": "Microsoft.Sql/servers/advisors",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('advisors_DbParameterization_name_1'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/advisors/DefragmentIndex'.",
+            "type": "Microsoft.Sql/servers/advisors",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('advisors_DefragmentIndex_name_1'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/advisors/ForceLastGoodPlan'.",
+            "type": "Microsoft.Sql/servers/advisors",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('advisors_ForceLastGoodPlan_name_1'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/auditingPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/auditingPolicies",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('auditingPolicies_Default_name_1'))]",
+            "apiVersion": "2014-04-01",
+            "location": "Central US",
+            "scale": null,
+            "properties": {
+                "auditingState": "New",
+                "eventTypesToAudit": "PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure",
+                "storageAccountName": null,
+                "storageAccountKey": null,
+                "storageAccountSecondaryKey": null,
+                "storageTableEndpoint": null,
+                "storageAccountResourceGroupName": null,
+                "storageAccountSubscriptionId": null,
+                "fullAuditLogsTableName": "SQLDBAuditLogsHsdcsecsqlserver",
+                "auditLogsTableName": "Hsdcsecsqlserver",
+                "retentionDays": "0"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/databases/HSDC_DB'.",
+            "type": "Microsoft.Sql/servers/databases",
+            "sku": {
+                "name": "S0",
+                "tier": "Standard"
+            },
+            "kind": "v12.0,user",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('databases_HSDC_DB_name_1'))]",
+            "apiVersion": "2017-03-01-preview",
+            "location": "centralus",
+            "scale": null,
+            "properties": {
+                "collation": "SQL_Latin1_General_CP1_CI_AS",
+                "maxSizeBytes": 268435456000,
+                "catalogCollation": "SQL_Latin1_General_CP1_CI_AS",
+                "zoneRedundant": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/firewallRules/AllowAllWindowsAzureIps'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('firewallRules_AllowAllWindowsAzureIps_name_1'))]",
+            "apiVersion": "2015-05-01-preview",
+            "scale": null,
+            "properties": {
+                "startIpAddress": "0.0.0.0",
+                "endIpAddress": "0.0.0.0"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/encryptionProtector/current'.",
+            "type": "Microsoft.Sql/servers/encryptionProtector",
+            "kind": "servicemanaged",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('encryptionProtector_current_name_1'))]",
+            "apiVersion": "2015-05-01-preview",
+            "scale": null,
+            "properties": {
+                "serverKeyName": "ServiceManaged",
+                "serverKeyType": "ServiceManaged"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/keys/ServiceManaged'.",
+            "type": "Microsoft.Sql/servers/keys",
+            "kind": "servicemanaged",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('keys_ServiceManaged_name_1'))]",
+            "apiVersion": "2015-05-01-preview",
+            "scale": null,
+            "properties": {
+                "serverKeyType": "[parameters('keys_ServiceManaged_name_1')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/databases/HSDC_DB/advisors/CreateIndex'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('databases_HSDC_DB_name_1'), '/', parameters('advisors_CreateIndex_name_3'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsecsqlserver_name'), parameters('databases_HSDC_DB_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/databases/HSDC_DB/advisors/DropIndex'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('databases_HSDC_DB_name_1'), '/', parameters('advisors_DropIndex_name_3'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsecsqlserver_name'), parameters('databases_HSDC_DB_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/databases/HSDC_DB/advisors/DbParameterization'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('databases_HSDC_DB_name_1'), '/', parameters('advisors_DbParameterization_name_3'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsecsqlserver_name'), parameters('databases_HSDC_DB_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/databases/HSDC_DB/advisors/DefragmentIndex'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('databases_HSDC_DB_name_1'), '/', parameters('advisors_DefragmentIndex_name_3'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsecsqlserver_name'), parameters('databases_HSDC_DB_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/databases/HSDC_DB/advisors/ForceLastGoodPlan'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('databases_HSDC_DB_name_1'), '/', parameters('advisors_ForceLastGoodPlan_name_3'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsecsqlserver_name'), parameters('databases_HSDC_DB_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/databases/HSDC_DB/auditingPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/databases/auditingPolicies",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('databases_HSDC_DB_name_1'), '/', parameters('auditingPolicies_Default_name_5'))]",
+            "apiVersion": "2014-04-01",
+            "location": "Central US",
+            "scale": null,
+            "properties": {
+                "auditingState": "New",
+                "eventTypesToAudit": "PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure",
+                "storageAccountName": null,
+                "storageAccountKey": null,
+                "storageAccountSecondaryKey": null,
+                "storageTableEndpoint": null,
+                "storageAccountResourceGroupName": null,
+                "storageAccountSubscriptionId": null,
+                "useServerDefault": "Enabled",
+                "fullAuditLogsTableName": "SQLDBAuditLogsHsdcsecsqlserverHsdcdb",
+                "auditLogsTableName": "HsdcsecsqlserverHsdcdb",
+                "retentionDays": "0"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsecsqlserver_name'), parameters('databases_HSDC_DB_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/databases/HSDC_DB/geoBackupPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/databases/geoBackupPolicies",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('databases_HSDC_DB_name_1'), '/', parameters('geoBackupPolicies_Default_name_3'))]",
+            "apiVersion": "2014-04-01",
+            "location": "Central US",
+            "scale": null,
+            "properties": {
+                "state": "Enabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsecsqlserver_name'), parameters('databases_HSDC_DB_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/databases/HSDC_DB/transparentDataEncryption/current'.",
+            "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('databases_HSDC_DB_name_1'), '/', parameters('transparentDataEncryption_current_name_3'))]",
+            "apiVersion": "2014-04-01",
+            "location": "Central US",
+            "scale": null,
+            "properties": {
+                "status": "Enabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsecsqlserver_name'), parameters('databases_HSDC_DB_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/databases/master/auditingPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/databases/auditingPolicies",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('databases_master_name_1'), '/', parameters('auditingPolicies_Default_name_4'))]",
+            "apiVersion": "2014-04-01",
+            "location": "Central US",
+            "scale": null,
+            "properties": {
+                "auditingState": "New",
+                "eventTypesToAudit": "PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure",
+                "storageAccountName": null,
+                "storageAccountKey": null,
+                "storageAccountSecondaryKey": null,
+                "storageTableEndpoint": null,
+                "storageAccountResourceGroupName": null,
+                "storageAccountSubscriptionId": null,
+                "useServerDefault": "Enabled",
+                "fullAuditLogsTableName": "SQLDBAuditLogsHsdcsecsqlserverMaster",
+                "auditLogsTableName": "HsdcsecsqlserverMaster",
+                "retentionDays": "0"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/databases/master/geoBackupPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/databases/geoBackupPolicies",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('databases_master_name_1'), '/', parameters('geoBackupPolicies_Default_name_2'))]",
+            "apiVersion": "2014-04-01",
+            "location": "Central US",
+            "scale": null,
+            "properties": {
+                "state": "Enabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsecsqlserver/databases/master/transparentDataEncryption/current'.",
+            "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+            "name": "[concat(parameters('servers_hsdcsecsqlserver_name'), '/', parameters('databases_master_name_1'), '/', parameters('transparentDataEncryption_current_name_2'))]",
+            "apiVersion": "2014-04-01",
+            "location": "Central US",
+            "scale": null,
+            "properties": {
+                "status": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsecsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/advisors/CreateIndex'.",
+            "type": "Microsoft.Sql/servers/advisors",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('advisors_CreateIndex_name'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/advisors/DropIndex'.",
+            "type": "Microsoft.Sql/servers/advisors",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('advisors_DropIndex_name'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/advisors/DbParameterization'.",
+            "type": "Microsoft.Sql/servers/advisors",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('advisors_DbParameterization_name'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/advisors/DefragmentIndex'.",
+            "type": "Microsoft.Sql/servers/advisors",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('advisors_DefragmentIndex_name'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/advisors/ForceLastGoodPlan'.",
+            "type": "Microsoft.Sql/servers/advisors",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('advisors_ForceLastGoodPlan_name'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/auditingPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/auditingPolicies",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('auditingPolicies_Default_name'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "auditingState": "New",
+                "eventTypesToAudit": "PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure",
+                "storageAccountName": null,
+                "storageAccountKey": null,
+                "storageAccountSecondaryKey": null,
+                "storageTableEndpoint": null,
+                "storageAccountResourceGroupName": null,
+                "storageAccountSubscriptionId": null,
+                "fullAuditLogsTableName": "SQLDBAuditLogsHsdcsqlserver",
+                "auditLogsTableName": "Hsdcsqlserver",
+                "retentionDays": "0"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/databases/HSDC_DB'.",
+            "type": "Microsoft.Sql/servers/databases",
+            "sku": {
+                "name": "S0",
+                "tier": "Standard"
+            },
+            "kind": "v12.0,user",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('databases_HSDC_DB_name'))]",
+            "apiVersion": "2017-03-01-preview",
+            "location": "westus",
+            "scale": null,
+            "properties": {
+                "collation": "SQL_Latin1_General_CP1_CI_AS",
+                "maxSizeBytes": 268435456000,
+                "catalogCollation": "SQL_Latin1_General_CP1_CI_AS",
+                "zoneRedundant": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/firewallRules/AllowAllWindowsAzureIps'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('firewallRules_AllowAllWindowsAzureIps_name'))]",
+            "apiVersion": "2015-05-01-preview",
+            "scale": null,
+            "properties": {
+                "startIpAddress": "0.0.0.0",
+                "endIpAddress": "0.0.0.0"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/firewallRules/ClientIPAddress_2018-11-17_21-45-35'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('firewallRules_ClientIPAddress_2018_11_17_21_45_35_name'))]",
+            "apiVersion": "2015-05-01-preview",
+            "scale": null,
+            "properties": {
+                "startIpAddress": "71.197.223.247",
+                "endIpAddress": "71.197.223.247"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/encryptionProtector/current'.",
+            "type": "Microsoft.Sql/servers/encryptionProtector",
+            "kind": "servicemanaged",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('encryptionProtector_current_name'))]",
+            "apiVersion": "2015-05-01-preview",
+            "scale": null,
+            "properties": {
+                "serverKeyName": "ServiceManaged",
+                "serverKeyType": "ServiceManaged"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/keys/ServiceManaged'.",
+            "type": "Microsoft.Sql/servers/keys",
+            "kind": "servicemanaged",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('keys_ServiceManaged_name'))]",
+            "apiVersion": "2015-05-01-preview",
+            "scale": null,
+            "properties": {
+                "serverKeyType": "[parameters('keys_ServiceManaged_name')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/databases/HSDC_DB/advisors/CreateIndex'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('databases_HSDC_DB_name'), '/', parameters('advisors_CreateIndex_name_2'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsqlserver_name'), parameters('databases_HSDC_DB_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/databases/HSDC_DB/advisors/DropIndex'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('databases_HSDC_DB_name'), '/', parameters('advisors_DropIndex_name_2'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsqlserver_name'), parameters('databases_HSDC_DB_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/databases/HSDC_DB/advisors/DbParameterization'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('databases_HSDC_DB_name'), '/', parameters('advisors_DbParameterization_name_2'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsqlserver_name'), parameters('databases_HSDC_DB_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/databases/HSDC_DB/advisors/DefragmentIndex'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('databases_HSDC_DB_name'), '/', parameters('advisors_DefragmentIndex_name_2'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsqlserver_name'), parameters('databases_HSDC_DB_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/databases/HSDC_DB/advisors/ForceLastGoodPlan'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('databases_HSDC_DB_name'), '/', parameters('advisors_ForceLastGoodPlan_name_2'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsqlserver_name'), parameters('databases_HSDC_DB_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/databases/HSDC_DB/auditingPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/databases/auditingPolicies",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('databases_HSDC_DB_name'), '/', parameters('auditingPolicies_Default_name_3'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "auditingState": "New",
+                "eventTypesToAudit": "PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure",
+                "storageAccountName": null,
+                "storageAccountKey": null,
+                "storageAccountSecondaryKey": null,
+                "storageTableEndpoint": null,
+                "storageAccountResourceGroupName": null,
+                "storageAccountSubscriptionId": null,
+                "useServerDefault": "Enabled",
+                "fullAuditLogsTableName": "SQLDBAuditLogsHsdcsqlserverHsdcdb",
+                "auditLogsTableName": "HsdcsqlserverHsdcdb",
+                "retentionDays": "0"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsqlserver_name'), parameters('databases_HSDC_DB_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/databases/HSDC_DB/geoBackupPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/databases/geoBackupPolicies",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('databases_HSDC_DB_name'), '/', parameters('geoBackupPolicies_Default_name_1'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "state": "Enabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsqlserver_name'), parameters('databases_HSDC_DB_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/databases/HSDC_DB/transparentDataEncryption/current'.",
+            "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('databases_HSDC_DB_name'), '/', parameters('transparentDataEncryption_current_name_1'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "status": "Enabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_hsdcsqlserver_name'), parameters('databases_HSDC_DB_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/databases/master/auditingPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/databases/auditingPolicies",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('databases_master_name'), '/', parameters('auditingPolicies_Default_name_2'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "auditingState": "New",
+                "eventTypesToAudit": "PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure",
+                "storageAccountName": null,
+                "storageAccountKey": null,
+                "storageAccountSecondaryKey": null,
+                "storageTableEndpoint": null,
+                "storageAccountResourceGroupName": null,
+                "storageAccountSubscriptionId": null,
+                "useServerDefault": "Enabled",
+                "fullAuditLogsTableName": "SQLDBAuditLogsHsdcsqlserverMaster",
+                "auditLogsTableName": "HsdcsqlserverMaster",
+                "retentionDays": "0"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/databases/master/geoBackupPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/databases/geoBackupPolicies",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('databases_master_name'), '/', parameters('geoBackupPolicies_Default_name'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "state": "Enabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/ec444e28-57db-40dc-a1b8-9c0a36b6b6ea/resourceGroups/HyperScaleDataCenter_West/providers/Microsoft.Sql/servers/hsdcsqlserver/databases/master/transparentDataEncryption/current'.",
+            "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+            "name": "[concat(parameters('servers_hsdcsqlserver_name'), '/', parameters('databases_master_name'), '/', parameters('transparentDataEncryption_current_name'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "status": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_hsdcsqlserver_name'))]"
+            ]
+        }
+    ]
+}
